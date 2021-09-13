@@ -1,0 +1,40 @@
+﻿@model IEnumerable<FuzzBizzWebApp.Models.FizzBuzzViewModel>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h6>Enter comma separated values in box below to process</h6>
+
+@using (Html.BeginForm("Index", "Home",FormMethod.Get)) {
+@Html.TextBox("userInput") 
+<input type ="submit" value="Classify">
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Input)
+            </th>
+            <th>                
+                @Html.DisplayName("Classified Input")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Input
+                    
+                </td>
+                <td>
+                    @item.ProcessedInput
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
